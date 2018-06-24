@@ -34,5 +34,17 @@ describe('Blockchain', ()=>{
         bc2.addBlock('foo');
         bc2.chain[1].data = 'bad data';
         expect(bc.isValidChain(bc2.chain)).toBe(false);
-    })
+    });
+    
+    it('new chain can replace existing chain if its size is greater and its valid', ()=>{
+        bc2.addBlock('foo');
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).toEqual(bc2.chain);
+    });
+    
+    it('new chain can not replace existing chain if its size is lesser and its not valid', ()=>{
+        bc.addBlock('foo');
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).not.toEqual(bc2.chain);
+    });
 })

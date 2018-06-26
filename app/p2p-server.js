@@ -18,6 +18,14 @@ class P2pServer{
         
         console.log(`Listening for peer-to-peer connections on: ${P2P_PORT}`);
     }
+    connectSocket(socket){
+        this.sockets.push(socket);
+        console.log('Socket connected');
+        
+        this.messageHandler(socket);
+        
+        this.sendMessage(socket);
+    }
     
     connectToPeers(){
         peers.forEach((peer) =>  {
@@ -45,14 +53,7 @@ class P2pServer{
         })
     }
     
-    connectSocket(socket){
-        this.sockets.push(socket);
-        console.log('Socket connected');
-        
-        this.messageHandler(socket);
-        
-        this.sendMessage(socket);
-    }
+    
 }
 
 module.exports = P2pServer;

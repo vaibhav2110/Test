@@ -14,7 +14,7 @@ class BlockChain{
     }
     
     isValidChain(chain){
-        if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
+        if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {console.log('corrupt genesis');return false};
         
         for(let i=1; i<chain.length; i++){
             let block = chain[i];

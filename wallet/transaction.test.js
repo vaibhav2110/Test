@@ -52,7 +52,7 @@ describe('Transaction', ()=> {
     
     describe('creating a reward transaction', ()=>{
         beforeEach(()=>{
-            transaction = Transaction.rewardTransaction(wallet, Wallet.blockchsainWallet());
+            transaction = Transaction.rewardTransaction(wallet, Wallet.blockchainWallet());
         });
         
         it(`reward the miner's wallet`, ()=>{
